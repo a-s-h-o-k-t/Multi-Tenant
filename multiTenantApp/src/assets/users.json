@@ -1,0 +1,78 @@
+{
+  "tenant1": [
+    {
+      "id": "t1-admin-001",
+      "username": "admin1",
+      "password": "admin123",
+      "email": "admin@tenant1.com",
+      "role": "admin",
+      "tenantId": "tenant1",
+      "firstName": "John",
+      "lastName": "Admin",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "t1-user-001",
+      "username": "user1",
+      "password": "user123",
+      "email": "user@tenant1.com",
+      "role": "user",
+      "tenantId": "tenant1",
+      "firstName": "Jane",
+      "lastName": "User",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "t1-user-002",
+      "username": "demo1",
+      "password": "demo123",
+      "email": "demo@tenant1.com",
+      "role": "user",
+      "tenantId": "tenant1",
+      "firstName": "Demo",
+      "lastName": "User",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "tenant2": [
+    {
+      "id": "t2-admin-001",
+      "username": "admin2",
+      "password": "admin123",
+      "email": "admin@tenant2.com",
+      "role": "admin",
+      "tenantId": "tenant2",
+      "firstName": "Sarah",
+      "lastName": "Admin",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "t2-user-001",
+      "username": "user2",
+      "password": "user123",
+      "email": "user@tenant2.com",
+      "role": "user",
+      "tenantId": "tenant2",
+      "firstName": "Mike",
+      "lastName": "User",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "t2-user-002",
+      "username": "demo2",
+      "password": "demo123",
+      "email": "demo@tenant2.com",
+      "role": "user",
+      "tenantId": "tenant2",
+      "firstName": "Demo",
+      "lastName": "Creative",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00Z"
+    }
+  ]
+}

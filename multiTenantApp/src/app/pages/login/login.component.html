@@ -1,0 +1,131 @@
+<div class="login-container">
+  <div class="login-card">
+    <!-- Header -->
+    <div class="login-header">
+      <div class="logo-section">
+        <div class="logo-placeholder">🏢</div>
+        <h1>Multi-Tenant App</h1>
+      </div>
+      <p class="subtitle">Sign in to your account</p>
+    </div>
+
+    <!-- Login Form -->
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="login-form"
+      novalidate
+    >
+      <!-- Error Message -->
+      @if (errorMessage()) {
+      <div class="alert alert-error">
+        <span class="alert-icon">⚠️</span>
+        {{ errorMessage() }}
+      </div>
+      }
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          [class.error]="isFieldInvalid('username')"
+          placeholder="Enter username"
+          autocomplete="username"
+        />
+        @if (isFieldInvalid('username')) {
+        <div class="error-message">{{ getFieldError("username") }}</div>
+        }
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <div class="password-input-container">
+          <input
+            [type]="showPassword() ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            [class.error]="isFieldInvalid('password')"
+            placeholder="Enter password"
+            autocomplete="current-password"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility()"
+            [attr.aria-label]="
+              showPassword() ? 'Hide password' : 'Show password'
+            "
+          >
+            {{ showPassword() ? "👁️" : "👁️‍🗨️" }}
+          </button>
+        </div>
+        @if (isFieldInvalid('password')) {
+        <div class="error-message">{{ getFieldError("password") }}</div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-full"
+        [disabled]="isLoading()"
+      >
+        @if (isLoading()) {
+        <span class="loading-spinner">⏳</span>
+        <span>Signing In...</span>
+        } @else {
+        <span>Sign In</span>
+        }
+      </button>
+
+      <!-- Clear Form Button -->
+      <button
+        type="button"
+        class="btn btn-secondary btn-full"
+        (click)="clearForm()"
+        [disabled]="isLoading()"
+      >
+        Clear Form
+      </button>
+    </form>
+
+    <!-- Demo Credentials -->
+    <div class="demo-section">
+      <h3>Demo Credentials</h3>
+      <p class="demo-description">
+        Click any credential below to auto-fill the form:
+      </p>
+
+      <div class="demo-grid">
+        @for (demo of demoCredentials; track demo.username) {
+        <div class="demo-card" (click)="fillDemoCredentials(demo)">
+          <div class="demo-header">
+            <strong>{{ demo.tenant }}</strong>
+            <span
+              class="role-badge"
+              [class]="'role-' + demo.role.toLowerCase()"
+            >
+              {{ demo.role }}
+            </span>
+          </div>
+          <div class="demo-credentials">
+            <div><strong>Username:</strong> {{ demo.username }}</div>
+            <div><strong>Password:</strong> {{ demo.password }}</div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="login-footer">
+      <p>Multi-Tenant Angular Application Demo</p>
+      <p class="version">v1.0.0</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="side-nav-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.sidebar-closed]="!sidebarOpen()">
+    <div class="sidebar-header">
+      <div class="logo-container">
+        <img [src]="currentTenant()?.logo" [alt]="(currentTenant()?.name || 'Company') + ' Logo'" class="logo">
+        @if (sidebarOpen()) {
+          <span class="company-name">{{ currentTenant()?.branding?.companyName }}</span>
+        }
+      </div>
+      <button class="sidebar-toggle" (click)="toggleSidebar()">
+        <span class="toggle-icon">{{ sidebarOpen() ? '←' : '→' }}</span>
+      </button>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a routerLink="/tenant/dashboard" routerLinkActive="active" class="nav-link">
+            <span class="nav-icon">📊</span>
+            @if (sidebarOpen()) {
+              <span class="nav-text">Dashboard</span>
+            }
+          </a>
+        </li>
+        @if (isAdmin()) {
+          <li class="nav-item">
+            <a routerLink="/tenant/admin" routerLinkActive="active" class="nav-link">
+              <span class="nav-icon">👑</span>
+              @if (sidebarOpen()) {
+                <span class="nav-text">Admin</span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- User Section -->
+    @if (currentUser()) {
+      <div class="user-section">
+        @if (sidebarOpen()) {
+          <div class="user-info">
+            <div class="user-avatar">
+              {{ currentUser()?.firstName?.charAt(0) }}{{ currentUser()?.lastName?.charAt(0) }}
+            </div>
+            <div class="user-details">
+              <div class="user-name">{{ currentUser()?.firstName }} {{ currentUser()?.lastName }}</div>
+              <div class="user-role">{{ currentUser()?.role | titlecase }}</div>
+            </div>
+          </div>
+        }
+        <button class="logout-btn" (click)="logout()" [title]="sidebarOpen() ? 'Logout' : 'Logout'">
+          <span class="logout-icon">🚪</span>
+          @if (sidebarOpen()) {
+            <span class="logout-text">Logout</span>
+          }
+        </button>
+      </div>
+    }
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+
+    <!-- Page Content -->
+    <main class="page-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

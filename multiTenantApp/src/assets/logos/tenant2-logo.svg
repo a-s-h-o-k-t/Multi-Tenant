@@ -1,0 +1,6 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="20" r="20" fill="#673ab7"/>
+  <path d="M20 8l6 12h-4v8h-4v-8h-4l6-12z" fill="white"/>
+  <circle cx="20" cy="30" r="2" fill="white"/>
+  <text x="20" y="37" text-anchor="middle" fill="#673ab7" font-family="Arial, sans-serif" font-size="8" font-weight="bold">CS</text>
+</svg>

@@ -1,0 +1,27 @@
+<div class="main-layout-container">
+  <!-- Loading State -->
+  @if (!hasInitialized) {
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Loading tenant configuration...</p>
+    </div>
+  }
+
+  <!-- Side Navigation Layout for Tenant 1 -->
+  @if (hasInitialized && currentTenant()?.layout === 'side-navigation') {
+    <app-side-navigation></app-side-navigation>
+  }
+
+  <!-- Top Navigation Layout for Tenant 2 -->
+  @if (hasInitialized && currentTenant()?.layout === 'top-navigation') {
+    <app-top-navigation></app-top-navigation>
+  }
+
+  <!-- Fallback for unknown layout -->
+  @if (hasInitialized && !currentTenant) {
+    <div class="error-container">
+      <h2>Configuration Error</h2>
+      <p>Unable to load tenant configuration. Please check your setup.</p>
+    </div>
+  }
+</div>

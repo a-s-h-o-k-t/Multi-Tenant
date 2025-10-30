@@ -1,0 +1,86 @@
+<div class="top-nav-layout">
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo-container">
+          <img [src]="currentTenant()?.logo" [alt]="currentTenant()?.name + ' Logo'" class="logo">
+          <span class="company-name">{{ currentTenant()?.branding?.companyName }}</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a routerLink="/tenant/dashboard" routerLinkActive="active" class="nav-link">
+              <span class="nav-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+         
+          @if (isAdmin()) {
+            <li class="nav-item">
+              <a routerLink="/tenant/admin" routerLinkActive="active" class="nav-link">
+                <span class="nav-icon">👑</span>
+                Admin
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <!-- User Info -->
+        @if (currentUser()) {
+          <div class="user-section">
+            <div class="user-info">
+              <div class="user-avatar">
+                {{ currentUser()?.firstName?.charAt(0) }}{{ currentUser()?.lastName?.charAt(0) }}
+              </div>
+              <div class="user-details">
+                <div class="user-name">{{ currentUser()?.firstName }} {{ currentUser()?.lastName }}</div>
+                <div class="user-role">{{ currentUser()?.role | titlecase }}</div>
+              </div>
+            </div>
+            <button class="logout-btn" (click)="logout()" title="Logout">
+              <span class="logout-icon">Logout 🚪</span>
+            </button>
+          </div>
+        }
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" [class.mobile-nav-open]="mobileMenuOpen()">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a routerLink="/tenant/dashboard" routerLinkActive="active" class="mobile-nav-link" (click)="toggleMobileMenu()">
+            <span class="nav-icon">📊</span>
+            Dashboard
+          </a>
+        </li>
+        @if (isAdmin()) {
+          <li class="mobile-nav-item">
+            <a routerLink="/tenant/admin" routerLinkActive="active" class="mobile-nav-link" (click)="toggleMobileMenu()">
+              <span class="nav-icon">👑</span>
+              Admin
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
