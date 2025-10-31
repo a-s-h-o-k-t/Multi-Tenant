@@ -46,25 +46,25 @@ export class TenantService {
     );
   }
 
-  detectTenantFromSubdomain(): string {
-    const hostname = window.location.hostname;
-
-    // For development
-    if (hostname === 'localhost') {
-      // Default to tenant1 for development
-      return 'tenant1';
-    }
-
-    // Extract subdomain from hostname
-    const parts = hostname.split('.');
-    if (parts.length > 2) {
-      const subdomain = parts[0];
-      return subdomain;
-    }
-
-    // Default fallback
+detectTenantFromSubdomain(): string {
+  const hostname = window.location.hostname;
+  
+  // For Firebase hosting
+  if (hostname.includes('tenant1-attech')) {
     return 'tenant1';
   }
+  if (hostname.includes('tenant2-attech')) {
+    return 'tenant2';
+  }
+  
+  // For development
+  if (hostname === 'localhost') {
+    return 'tenant1';
+  }
+  
+  // Default fallback
+  return 'tenant1';
+}
 
   setCurrentTenant(tenant: TenantConfig): void {
     this.currentTenantSubject.next(tenant);
