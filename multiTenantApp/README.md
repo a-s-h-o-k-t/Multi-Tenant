@@ -198,6 +198,98 @@ Themes are applied dynamically by the TenantService, allowing real-time theme sw
    - **Users**: See "My Profile" card only
    - **Admins**: See both "My Profile" and "Admin Panel" cards
 
+## 🚀 Deployment to Firebase Hosting
+
+### Prerequisites
+- Firebase CLI installed: `npm install -g firebase-tools`
+- Firebase project created with multiple hosting sites
+- Domain configured (optional)
+
+### Firebase Project Setup
+
+1. **Login to Firebase**
+   ```bash
+   firebase login
+   ```
+
+2. **Initialize Firebase Hosting** (if not already done)
+   ```bash
+   firebase init hosting
+   ```
+
+### Configuration Files
+
+Your project should have these Firebase configuration files:
+
+**`.firebaserc`**
+```json
+{
+  "projects": {
+    "default": "tenant-d87e3"
+  },
+  "targets": {
+    "tenant-d87e3": {
+      "hosting": {
+        "tenant1": ["tenant1-attech"],
+        "tenant2": ["tenant2-attech"]
+      }
+    }
+  }
+}
+```
+
+**`firebase.json`**
+```json
+{
+  "hosting": [
+    {
+      "target": "tenant1",
+      "public": "dist/multi-tenant-app/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [{ "source": "**", "destination": "/index.html" }]
+    },
+    {
+      "target": "tenant2", 
+      "public": "dist/multi-tenant-app/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [{ "source": "**", "destination": "/index.html" }]
+    }
+  ]
+}
+```
+
+### Deployment Steps
+
+1. **Build the Application**
+   ```bash
+   ng build --configuration production
+   ```
+
+2. **Deploy to Both Sites**
+   ```bash
+   firebase deploy --only hosting:tenant1,hosting:tenant2
+   ```
+
+3. **Deploy to Individual Sites** (Optional)
+   ```bash
+   # Deploy only to tenant1
+   firebase deploy --only hosting:tenant1
+   
+   # Deploy only to tenant2
+   firebase deploy --only hosting:tenant2
+   ```
+
+4. **Deploy All Hosting Targets**
+   ```bash
+   firebase deploy --only hosting
+   ```
+
+### Post-Deployment
+
+After successful deployment, your sites will be available at:
+- **Tenant 1**: `https://tenant1-attech.web.app`
+- **Tenant 2**: `https://tenant2-attech.web.app`
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:

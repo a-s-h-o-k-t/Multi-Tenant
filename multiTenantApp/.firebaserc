@@ -5,8 +5,12 @@
   "targets": {
     "tenant-d87e3": {
       "hosting": {
-        "tenant1": ["tenant1-attech"],
-        "tenant2": ["tenant2-attech"]
+        "tenant1": [
+          "tenant1-attech"
+        ],
+        "tenant2": [
+          "tenant2-attech"
+        ]
       }
     }
   }
