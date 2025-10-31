@@ -13,9 +13,7 @@ export interface TenantTheme {
 
 export interface TenantBranding {
   companyName: string;
-  tagline: string;
   supportEmail: string;
-  website: string;
 }
 
 export interface TenantConfig {

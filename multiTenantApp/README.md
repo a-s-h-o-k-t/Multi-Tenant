@@ -141,7 +141,6 @@ Themes are applied dynamically by the TenantService, allowing real-time theme sw
   },
   "branding": {
     "companyName": "Tenant 1 Solutions Inc.",
-    "tagline": "Enterprise Solutions Provider"
   }
 }
 ```
@@ -164,7 +163,6 @@ Themes are applied dynamically by the TenantService, allowing real-time theme sw
   },
   "branding": {
     "companyName": "Tenant 2 Solutions Inc.",
-    "tagline": "Creative Studio & Design"
   }
 }
 ```

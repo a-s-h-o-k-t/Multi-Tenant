@@ -169,16 +169,6 @@
   font-size: 14px;
 }
 
-.tagline {
-  color: var(--color-textSecondary);
-  font-style: italic;
-  font-size: 14px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
-
 .user-menu {
   display: flex;
   align-items: center;

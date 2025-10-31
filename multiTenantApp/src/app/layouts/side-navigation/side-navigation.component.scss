@@ -158,12 +158,6 @@
   gap: 16px;
 }
 
-.tagline {
-  color: var(--color-textSecondary);
-  font-style: italic;
-  font-size: 14px;
-}
-
 .user-menu {
   display: flex;
   align-items: center;
@@ -286,9 +280,5 @@
 
   .main-content {
     margin-left: 0;
-  }
-
-  .tagline {
-    display: none;
   }
 }

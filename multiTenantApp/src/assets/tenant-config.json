@@ -20,9 +20,7 @@
     },
     "branding": {
       "companyName": "Tenant 1 Solutions Inc.",
-      "tagline": "Powering Your Business Forward",
-      "supportEmail": "support@tenant1.com",
-      "website": "https://tenant1.domain.com"
+      "supportEmail": "support@tenant1.com"
     }
   },
   "tenant2": {
@@ -46,9 +44,7 @@
     },
     "branding": {
       "companyName": "Tenant 2 Solutions Inc.",
-      "tagline": "Design Beyond Imagination",
-      "supportEmail": "hello@tenant2.com",
-      "website": "https://tenant2.domain.com"
+      "supportEmail": "hello@tenant2.com"
     }
   }
 }
